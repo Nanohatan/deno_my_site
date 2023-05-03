@@ -1,7 +1,5 @@
-import { JSX } from "preact";
 import { Head } from "$fresh/src/runtime/head.ts";
 import { Handlers,PageProps } from "$fresh/server.ts";
-import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 interface Card{
   id: string;
   name: string;
@@ -28,7 +26,6 @@ export const handler: Handlers<Card[]> = {
 
 
 export default function Page({data}:PageProps<Card[]>) {
-  const api_key= config()["API"];
   return (
     <>
       <Head>
