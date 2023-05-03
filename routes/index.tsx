@@ -35,10 +35,14 @@ export default function Page({data}:PageProps<Card[]>) {
         <div class="mb-16 mx-8 text-center">
         <span class="text-3xl font-bold text-black mb-3">my collections</span>
         {data.map((card)=>(
-          <div class="block m-3" style="position:relative;">
-            <img src= {card.img_url} class="" style="width:100%" alt="item image"/>
-            <div class="bg-gray-300 font-bold" style="position:absolute; top:8px; left:16px;">{card.name}</div>
+          <a href={card.name}>
+          <div class="card">
+            <div class="card-body">
+            <div class="card-title">{card.name}</div>
+            <img src={card.img_url} class="card-img-top" alt="image"></img>
+            </div>          
           </div>
+          </a>
         ))}        
         </div>
       </div>
