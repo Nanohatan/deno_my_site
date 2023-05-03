@@ -1,5 +1,6 @@
-import { Head,PageProps } from "$fresh/runtime.ts";
-import { Handlers } from "$fresh/server.ts";
+import { Head } from "$fresh/src/runtime/head.ts";
+import { Handlers,PageProps } from "$fresh/server.ts";
+import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 interface Card{
   id: string;
   name: string;
@@ -21,17 +22,18 @@ export const handler: Handlers<Card[]> = {
         img_url:"https://dummyimage.com/300.png/09f/fff",
       }
     ];
-    return ctx.render(card);
-  },
+    return await ctx.render(card);
+  }, 
   
 }
 
 
 export default function Home({data}:PageProps<Card[]>) {
+  const api_key= config()["API"];
   return (
     <>
       <Head>
-        <title>Fresh App</title>
+        <title>Home</title>
       </Head>
       <div>
         <h1>my collections</h1>
@@ -45,8 +47,6 @@ export default function Home({data}:PageProps<Card[]>) {
             />
           </div>
         ))}
-        
-
       </div>
 
 
