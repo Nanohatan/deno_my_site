@@ -30,23 +30,32 @@ export default function Page({data}:PageProps<Card[]>) {
     <>
       <Head>
         <title>Home</title>
-      </Head>
-      <div class="flex justify-center items-center h-screen">
-        <div class="mb-16 mx-8 text-center">
-        <span class="text-3xl font-bold text-black mb-3">my collections</span>
-        {data.map((card)=>(
-          <a href={card.name}>
-          <div class="card">
-            <div class="card-body">
-            <div class="card-title">{card.name}</div>
-            <img src={card.img_url} class="card-img-top" alt="image"></img>
-            </div>          
-          </div>
-          </a>
-        ))}        
-        </div>
-      </div>
+        <link href="/index.css" rel="stylesheet" ></link>
 
+      </Head>
+      <div class="container-md flex justify-content-center border border-dark">
+      <div class="row">
+        <div class="col-sm-auto">
+        &#x1f622;
+        </div>
+        <div class="col">
+        <div class="playing-card">
+          <div class="card-inner">
+            <div class="card-front" style="font-size: 5rem;">&#x1f984;</div>
+            <div class="card-back"style="font-size: 5rem;">&#x1f98f;</div>
+          </div>
+        </div>
+
+
+        </div>
+
+        <div class="col-sm-auto">
+        &#x1f604;
+        </div>
+
+      </div>
+      
+      </div>
 
     </>
   );
