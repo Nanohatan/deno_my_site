@@ -1,0 +1,35 @@
+
+html {
+  font-family: sans-serif;
+}
+
+.form input[type="number"] {
+  width: 200px;
+}
+
+.lastResult {
+  color: white;
+  padding: 3px;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid red;
+  }
+}
+@media screen and (min-width: 480px) {
+  body {
+    width: 50%;
+    max-width: 800px;
+    min-width: 480px;
+    margin: 0 auto;
+    border: 1px solid green;
+
+  }
+}
+
+td {
+  text-align: center;
+}
