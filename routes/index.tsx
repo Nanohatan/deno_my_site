@@ -33,11 +33,14 @@ export default function Page({data}:PageProps<Card[]>) {
         <link href="/index.css" rel="stylesheet" ></link>
 
       </Head>
-      <div class="container-md flex justify-content-center border border-dark">
+      
+      <div class="container justify-content-center border border-dark">
       <div class="row">
-        <div class="col-sm-auto">
-        &#x1f622;
-        </div>
+      <div class="col card" id="calendar"></div>
+      </div>
+
+      <div class="row">
+  
         <div class="col">
         <div class="playing-card">
           <div class="card-inner">
@@ -45,18 +48,12 @@ export default function Page({data}:PageProps<Card[]>) {
             <div class="card-back"style="font-size: 5rem;">&#x1f98f;</div>
           </div>
         </div>
-
-
-        </div>
-
-        <div class="col-sm-auto">
-        &#x1f604;
         </div>
 
       </div>
       
       </div>
-
+      <script type="text/javascript" src="/index.js"></script>
     </>
   );
 }

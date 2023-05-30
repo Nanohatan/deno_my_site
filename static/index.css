@@ -35,6 +35,46 @@
 
 .card-back {
   border-radius: 10px;
-  background-color: skyblue;
+  background-color: lightskyblue;
   transform: rotateY(180deg);
+}
+
+#calendar {
+  width: 300px;
+  background-color: lavenderblush;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#calendar table {
+  width: 100%;
+}
+
+#calendar th {
+  background-color: AliceBlue	;
+  color:CornflowerBlue;
+  padding: 5px;
+  text-align: center;
+  border-bottom: 2px Brown solid;
+}
+
+#calendar td {
+  text-align: center;
+  padding: 5px;
+}
+#calendar td.today {
+  position: relative;
+  font-weight: bold;
+  border: 2px Brown solid;
+}
+
+
+#calendar td.today::before {
+  content: "👈😀";
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: bold;
+  color: lightgreen;
 }
