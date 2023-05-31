@@ -13,8 +13,8 @@ const private_key = env["private_key"];
 const googleServiceAccountCredentials = `{
   "type": "service_account",
   "project_id": "logical-signer-388402",
-  "private_key_id": "${Deno.env.get(private_key_id)}",
-  "private_key": "${Deno.env.get(private_key)}",
+  "private_key_id": "${Deno.env.get("private_key_id")}",
+  "private_key": "${Deno.env.get("private_key")}",
   "client_email": "read-35@logical-signer-388402.iam.gserviceaccount.com",
   "client_id": "111975552713551719960",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
