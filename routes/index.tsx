@@ -8,14 +8,13 @@ const env = await load();
 // const googleServiceAccountCredentials= await Deno.readTextFile(
 //   "./logical-signer-388402-adaa9a4cdb52.json",
 // );
-console.log(env["private_key_id"]);
 const private_key_id = env["private_key_id"];
 const private_key = env["private_key"];
 const googleServiceAccountCredentials = `{
   "type": "service_account",
   "project_id": "logical-signer-388402",
-  "private_key_id": "${private_key_id}",
-  "private_key": "${private_key}",
+  "private_key_id": "${Deno.env.get(private_key_id)}",
+  "private_key": "${Deno.env.get(private_key)}",
   "client_email": "read-35@logical-signer-388402.iam.gserviceaccount.com",
   "client_id": "111975552713551719960",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
