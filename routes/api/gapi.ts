@@ -11,8 +11,8 @@ const private_key = env["private_key"];
 const googleServiceAccountCredentials = `{
   "type": "service_account",
   "project_id": "logical-signer-388402",
-  "private_key_id": "${Deno.env.get("private_key_id")}",
-  "private_key": "${Deno.env.get("private_key")}",
+  "private_key_id": "${Deno.env.get("private_key_id")||private_key_id}",
+  "private_key": "${Deno.env.get("private_key")||private_key}",
   "client_email": "read-35@logical-signer-388402.iam.gserviceaccount.com",
   "client_id": "111975552713551719960",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -35,15 +35,38 @@ const now = new Date();
 const spreadsheetId = '12B3a_jRE0O_R6k2kgZXpmWgMVn83-JTMjk9-wNkGXnY'; // スプレッドシートのID
 const range = 'Sheet1!A1:B'; // 読み込むセルの範囲
 
-export const handler: Handlers = {
-    async GET() {
-    const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`, {
+// export const handler: Handlers = {
+//     async GET() {
+//     const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`, {
+//         headers: {
+//             Authorization: `Bearer ${token.access_token}`, // 認証トークンをヘッダーに含めます。
+//         },
+//     });
+//     const gapiData = await response.json();
+    
+//     const filteredDate = gapiData.values.filter((rows) => {
+//         const date = new Date(rows[0]);
+//         return date.getMonth() === now.getMonth(); // 6月の場合は月の値が5になります（0から始まるため）
+//       });
+//       const tmpJson = filteredDate.map((row) => {
+//         const obj: { [key: string]: string } = {};
+//         for (let i = 0; i < gapiData.values[0].length; i++) {
+//           obj[gapiData.values[0][i]] = row[i];
+//         }
+//         return obj;
+//       });
+//     console.log(tmpJson);
+//     return Response.json(tmpJson);
+//     },
+//   };
+const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`, {
         headers: {
             Authorization: `Bearer ${token.access_token}`, // 認証トークンをヘッダーに含めます。
         },
-    });
-    const gapiData = await response.json();
-    
+});
+const gapiData = await response.json();
+
+export const handler = (_req: Request, _ctx: HandlerContext): Response => {
     const filteredDate = gapiData.values.filter((rows) => {
         const date = new Date(rows[0]);
         return date.getMonth() === now.getMonth(); // 6月の場合は月の値が5になります（0から始まるため）
@@ -57,5 +80,4 @@ export const handler: Handlers = {
       });
     console.log(tmpJson);
     return Response.json(tmpJson);
-    },
-  };
+};
