@@ -79,6 +79,8 @@ export const handler = (_req: Request, _ctx: HandlerContext): Response => {
         }
         return obj;
       });
-    console.log(tmpJson);
-    return Response.json(tmpJson);
+
+    return Response.json([{ date: "2023/06/28", "フィットボクシング": undefined },
+    { date: "2023/06/29", "フィットボクシング": undefined },
+    { date: "2023/06/30", "フィットボクシング": undefined }]);
 };
