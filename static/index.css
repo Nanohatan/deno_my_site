@@ -51,11 +51,10 @@
 }
 
 #calendar th {
-  background-color: AliceBlue	;
   color:CornflowerBlue;
   padding: 5px;
   text-align: center;
-  border-bottom: 2px Brown solid;
+  border-bottom: 2px CornflowerBlue solid;
 }
 
 #calendar td {
@@ -63,18 +62,20 @@
   padding: 5px;
 }
 #calendar td.today {
+  background-color: rgba(0, 255, 0, 0.2);;
   position: relative;
   font-weight: bold;
-  border: 2px Brown solid;
+  margin: 10px;
 }
 
 
 #calendar td.today::before {
   content: "👈😀";
-  
   position: absolute;
   top: 0;
   right: 0;
   font-weight: bold;
-  color: lightgreen;
+}
+#calendar td.exercise::after {
+  content: "🏃";
 }

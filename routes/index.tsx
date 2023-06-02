@@ -1,9 +1,6 @@
 import { Head } from "$fresh/src/runtime/head.ts";
 import { Handlers,PageProps } from "$fresh/server.ts";
 import {getToken,  GoogleAuth,} from "https://deno.land/x/googlejwtsa@v0.1.8/mod.ts";
-import { config} from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
-import { load } from "https://deno.land/std@0.185.0/dotenv/mod.ts";
-
 
 interface Card{
   id: string;

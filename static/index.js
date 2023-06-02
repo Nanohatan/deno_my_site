@@ -5,6 +5,14 @@ async function getG(){
 }
 
 function createCalendar(progress) {
+  const exerciseList = progress.map(p => {
+    if (p["フィットボクシング"]!=undefined){
+      return parseInt(p["date"].slice(-2), 10);
+    }else{
+      return 0;
+    }
+  });
+
   const calendar = document.getElementById("calendar");
   // カレンダーの日付を作成
   const firstDayOfMonth = new Date(progress[0]["date"]);
@@ -50,6 +58,9 @@ function createCalendar(progress) {
         td.textContent = date;
         if (date ===currentDate.getDate()){
           td.className = "today";
+        }
+        if (exerciseList.includes(date)){
+          td.classList.add("exercise");
         }
         row.appendChild(td);
         date++;
