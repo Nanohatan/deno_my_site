@@ -1,27 +1,27 @@
 import { Head } from "$fresh/src/runtime/head.ts";
 import { Handlers,PageProps } from "$fresh/server.ts";
 import * as dejs from "https://deno.land/x/dejs@0.10.3/mod.ts";
-interface Progress {
-  date: string;
-  フィットボクシング: string;
-}
+// interface Progress {
+//   date: string;
+//   フィットボクシング: string;
+// }
 
-export const handler: Handlers<Progress | null> = {
-  async GET(req, ctx) {
-    console.log(req.url);
-    const resp = await fetch(`http://localhost:80/api/gapi`);
-    if (resp.status === 404) {
-      return ctx.render(null);
-    }
-    const p: Progress = await resp.json();
-    return ctx.render(p);
-  },
-};
+// export const handler: Handlers<Progress | null> = {
+//   async GET(req, ctx) {
+//     console.log(req.url);
+//     const resp = await fetch(`http://localhost/api/gapi`);
+//     if (resp.status === 404) {
+//       return ctx.render(null);
+//     }
+//     const p: Progress = await resp.json();
+//     return ctx.render(p);
+//   },
+// };
 
 export default function Page({ data }: PageProps<Progress[] | null>) {
-  if (!data) {
-    return <h1>Data not found</h1>;
-  }
+  // if (!data) {
+  //   return <h1>Data not found</h1>;
+  // }
   (async () => {
     const output = await dejs.renderFile("./static/ejs/template.ejs", {
       name: "aaa",
@@ -38,7 +38,6 @@ export default function Page({ data }: PageProps<Progress[] | null>) {
   // );
 
   
-  console.log(data[0]);
   return (
     <>
       <Head>
