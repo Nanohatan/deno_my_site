@@ -9,7 +9,7 @@ interface Progress {
 export const handler: Handlers<Progress | null> = {
   async GET(req, ctx) {
     console.log(req.url);
-    const resp = await fetch(`${req.url}api/gapi`);
+    const resp = await fetch(`http://localhost:80/api/gapi`);
     if (resp.status === 404) {
       return ctx.render(null);
     }
