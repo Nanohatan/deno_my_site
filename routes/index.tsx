@@ -6,22 +6,22 @@ interface Progress {
   フィットボクシング: string;
 }
 
-export const handler: Handlers<Progress | null> = {
-  async GET(req, ctx) {
-    console.log(req.url);
-    const resp = await fetch(`http://localhost:80/api/gapi`);
-    if (resp.status === 404) {
-      return ctx.render(null);
-    }
-    const p: Progress = await resp.json();
-    return ctx.render(p);
-  },
-};
+// export const handler: Handlers<Progress | null> = {
+//   async GET(req, ctx) {
+//     console.log(req.url);
+//     const resp = await fetch(`http://localhost:80/api/gapi`);
+//     if (resp.status === 404) {
+//       return ctx.render(null);
+//     }
+//     const p: Progress = await resp.json();
+//     return ctx.render(p);
+//   },
+// };
 
 export default function Page({ data }: PageProps<Progress[] | null>) {
-  if (!data) {
-    return <h1>Data not found</h1>;
-  }
+  // if (!data) {
+  //   return <h1>Data not found</h1>;
+  // }
   (async () => {
     const output = await dejs.renderFile("./static/ejs/template.ejs", {
       name: "aaa",
