@@ -51,10 +51,10 @@
 }
 
 #calendar th {
-  color:CornflowerBlue;
+  color:DarkSeaGreen;
   padding: 5px;
   text-align: center;
-  border-bottom: 2px CornflowerBlue solid;
+  border-bottom: 2px DarkSeaGreen solid;
 }
 
 #calendar td {
@@ -62,7 +62,7 @@
   padding: 5px;
 }
 #calendar td.today {
-  background-color: rgba(0, 255, 0, 0.2);;
+  background-color: rgb(143, 188, 143,0.5);;
   position: relative;
   font-weight: bold;
   margin: 10px;
@@ -78,4 +78,7 @@
 }
 #calendar td.exercise::after {
   content: "🏃";
+}
+.card {
+  margin: 10px;
 }
