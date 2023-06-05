@@ -6,8 +6,8 @@ interface Progress {
   date: string;
   フィットボクシング: string;
 }
-const jsonResponse = await fetch("https://wakuwaku.deno.dev/api/gapi");
-const jsonData = await jsonResponse.json();
+// const jsonResponse = await fetch("https://wakuwaku.deno.dev/api/gapi");
+// const jsonData = await jsonResponse.json();
 // export const handler: Handlers<Progress | null> = {
 //   async GET(_, ctx) {
 //     const resp = await fetch(`https://wakuwaku.deno.dev/api/gapi`);
@@ -43,7 +43,7 @@ export default function Page(){
 
       
       <div class="container justify-content-center border border-dark">
-      <div class="row">
+      {/* <div class="row">
         {jsonData.map((j:Progress,index:number) => {
           const now = new Date();
           const d = parseInt(j.date.slice(-2), 10);
@@ -53,7 +53,7 @@ export default function Page(){
             );
           }
         })}
-      </div>
+      </div> */}
       <div class="row">
       <div class="col card" id="calendar">
 
