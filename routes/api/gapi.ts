@@ -1,6 +1,5 @@
 import {getToken,  GoogleAuth,} from "https://deno.land/x/googlejwtsa@v0.1.8/mod.ts";
 import { load } from "https://deno.land/std@0.185.0/dotenv/mod.ts";
-import { HandlerContext } from "$fresh/server.ts";
 import { Handlers } from "$fresh/server.ts";
 const env = await load();
 // const googleServiceAccountCredentials= await Deno.readTextFile(
@@ -36,19 +35,26 @@ const spreadsheetId = '12B3a_jRE0O_R6k2kgZXpmWgMVn83-JTMjk9-wNkGXnY'; // スプ�
 const range = 'Sheet1!A1:B'; // 読み込むセルの範囲
 
 export const handler: Handlers = {
-    async GET() {
+    async GET(req) {
+      const url = new URL(req.url); 
+      
         const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`, {
         headers: {
             Authorization: `Bearer ${token.access_token}`, // 認証トークンをヘッダーに含めます。
         },
     });
+    const month = url.searchParams.get("month");
     const gapiData = await response.json();
     
-    const filteredDate = gapiData.values.filter((rows) => {
+    const filteredDate = gapiData.values.filter((rows:string[]) => {
         const date = new Date(rows[0]);
-        return date.getMonth() === now.getMonth(); // 6月の場合は月の値が5になります（0から始まるため）
+        if (month){
+          return date.getMonth() === Number(month)-1;
+        }else{
+          return date.getMonth() === now.getMonth();
+        }// 6月の場合は月の値が5になります（0から始まるため）
       });
-      const tmpJson = filteredDate.map((row) => {
+      const tmpJson = filteredDate.map((row:string[]) => {
         const obj: { [key: string]: string } = {};
         for (let i = 0; i < gapiData.values[0].length; i++) {
           obj[gapiData.values[0][i]] = row[i];
